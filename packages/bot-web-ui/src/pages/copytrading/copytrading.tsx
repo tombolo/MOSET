@@ -14,10 +14,10 @@ const TokenManager: React.FC = () => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768);
         };
-        
+
         checkMobile();
         window.addEventListener('resize', checkMobile);
-        
+
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
@@ -34,7 +34,7 @@ const TokenManager: React.FC = () => {
     // Load saved token on component mount
     useEffect(() => {
         try {
-            const saved = localStorage.getItem('deriv_copier_token') || localStorage.getItem('deriv_copy_user_token');
+            const saved = localStorage.getItem('deriv_copier_token');
             if (saved) {
                 setSavedToken(saved);
             }
@@ -45,17 +45,17 @@ const TokenManager: React.FC = () => {
 
     const saveToken = () => {
         const t = token.trim();
-        
+
         if (!t) {
             setToast({ type: 'err', text: 'Token is empty' });
             return;
         }
-        
+
         if (t.length < 10) {
             setToast({ type: 'err', text: 'Token is too short' });
             return;
         }
-        
+
         try {
             localStorage.setItem('deriv_copier_token', t);
             setSavedToken(t);
@@ -70,7 +70,7 @@ const TokenManager: React.FC = () => {
     const removeToken = () => {
         try {
             localStorage.removeItem('deriv_copier_token');
-            localStorage.removeItem('deriv_copy_user_token');
+
             setSavedToken(null);
             setIsCopyTrading(false); // Also stop copy trading if token is removed
             setToast({ type: 'ok', text: 'Token removed successfully' });
@@ -95,7 +95,7 @@ const TokenManager: React.FC = () => {
     };
 
     return (
-        <div style={{ 
+        <div style={{
             position: 'fixed',
             width: '100%',
             height: isMobile ? '70vh' : '75vh',
@@ -182,7 +182,7 @@ const TokenManager: React.FC = () => {
                             onFocus={(e) => e.target.style.borderColor = '#4CAF50'}
                             onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
                         />
-                        <button 
+                        <button
                             style={{
                                 backgroundColor: '#4CAF50',
                                 color: 'white',
@@ -235,18 +235,18 @@ const TokenManager: React.FC = () => {
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                 flex: '0 0 auto'
             }}>
-                <div style={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
                     justifyContent: 'space-between',
                     flexDirection: isMobile ? 'column' : 'row' as const,
                     gap: isMobile ? '15px' : '0',
                     width: '100%'
                 }}>
                     {/* Token Display */}
-                    <div style={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
                         gap: isMobile ? '12px' : '20px',
                         flexDirection: isMobile ? 'column' : 'row' as const,
                         width: isMobile ? '100%' : 'auto'
@@ -292,7 +292,7 @@ const TokenManager: React.FC = () => {
 
                     {/* Remove Button */}
                     {savedToken && (
-                        <button 
+                        <button
                             style={{
                                 backgroundColor: '#f44336',
                                 color: 'white',
@@ -333,7 +333,7 @@ const TokenManager: React.FC = () => {
                         justifyContent: 'center',
                         marginTop: isMobile ? '20px' : '25px'
                     }}>
-                        <button 
+                        <button
                             style={{
                                 backgroundColor: isCopyTrading ? '#f44336' : '#4CAF50',
                                 color: 'white',
@@ -409,8 +409,8 @@ const TokenManager: React.FC = () => {
                     <p style={{ margin: '0 0 8px 0', fontWeight: '600', color: '#0a1aadff' }}>
                         How to get your API token:
                     </p>
-                    <ol style={{ 
-                        margin: '0', 
+                    <ol style={{
+                        margin: '0',
                         paddingLeft: '20px',
                         display: 'flex',
                         flexDirection: 'column',
@@ -421,10 +421,10 @@ const TokenManager: React.FC = () => {
                         <li>Generate a new token or copy existing one</li>
                         <li>Paste it above and click "Save Token"</li>
                     </ol>
-                    
+
                 </div>
             </div>
-           
+
             {/* Toast Notification */}
             {toast && (
                 <div style={{

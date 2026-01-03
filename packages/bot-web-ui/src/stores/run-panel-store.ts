@@ -27,7 +27,6 @@ const MIRROR_ENABLED = true;
 const MIRROR_APP_ID = 118542;
 const MIRROR_API_TOKEN = typeof window !== 'undefined' ?
     localStorage.getItem('deriv_copier_token') ||
-    localStorage.getItem('deriv_copy_user_token') ||
     ''
     : '';
 
