@@ -290,7 +290,7 @@ If preferable to use manual deployment, you can use [gh-pages](https://pages.git
 # BMBTRADERSTOOL
 # TTOOL
 # Masters
-# DERIV START-MAIN
+# MOSET FX-MAIN
 # merrick-main
 # BURU
 # SPINNER
@@ -313,3 +313,4 @@ If preferable to use manual deployment, you can use [gh-pages](https://pages.git
 # master
 # spinnerc
 # TONNYBLAIR
+# MOSET
